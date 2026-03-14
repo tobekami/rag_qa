@@ -1,0 +1,7 @@
+numpy
+faiss-cpu
+sentence-transformers
+requests
+python-dotenv
+# Adding standard testing framework
+pytest

@@ -1,0 +1,1066 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+data/resume.json
+progress.md
+requirements.txt
+src/__init__.py
+src/rag_qa.ipynb
+src/rag_qa.py
+tests/__init__.py
+tests/test_rag_qa.py
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="data/resume.json">
+{
+  "personal_information": {
+    "name": "Tobechukwu Emelife",
+    "location": "Lagos, Nigeria",
+    "email": "brunoemelife@gmail.com",
+    "phone": "+234-815-698-5315",
+    "linkedin": "linkedin.com/in/tobechukwuemelife",
+    "github": "github.com/tobekami",
+    "summary": "Electrical and Electronics Engineering undergraduate at the University of Lagos with a strong passion for software engineering and finance. Experienced in developing responsive websites, React applications, and integrating machine learning tools."
+  },
+  "education": [
+    {
+      "institution": "University of Lagos",
+      "degree": "BSc, Electrical and Electronics Engineering",
+      "timeline": "2018 - 2026"
+    }
+  ],
+  "experience": [
+    {
+      "company": "FlexiSAF Edusoft Limited",
+      "role": "Artificial Intelligence Engineer",
+      "timeline": "January 2026 - Present",
+      "location": "Lagos State, Nigeria"
+    },
+    {
+      "company": "Riascope Systems Limited",
+      "role": "Chief Technology Officer / Software Engineer",
+      "timeline": "November 2024 - Present",
+      "location": "Lagos State, Nigeria"
+    },
+    {
+      "company": "Helloworld Technologies Limited",
+      "role": "Fullstack Software Engineer",
+      "timeline": "October 2025 - Present"
+    },
+    {
+      "company": "UNILAG Design Studio",
+      "role": "Engineering Intern",
+      "timeline": "April 2024 - Present",
+      "location": "Lagos, Nigeria",
+      "responsibilities": [
+        "Developed interactive internal dashboards for IoT data visualization using React.",
+        "Bridged hardware and web layers by designing intuitive UI controls for IoT devices.",
+        "Refactored legacy frontend code to improve component reusability."
+      ]
+    },
+    {
+      "company": "HeadStarter AI",
+      "role": "Software Engineering Fellow",
+      "timeline": "July 2024 - October 2024",
+      "location": "Remote",
+      "responsibilities": [
+        "Engineered responsive AI apps using React/TypeScript, implementing SSR.",
+        "Orchestrated state management using custom React Hooks and Context API.",
+        "Established CI/CD pipelines with GitHub Actions for automated linting and testing."
+      ]
+    },
+    {
+      "company": "SalvaHelp",
+      "role": "Web Developer & IT Support",
+      "timeline": "October 2023 - January 2024",
+      "responsibilities": [
+        "Architected high-performance marketing site, optimizing critical rendering paths for SEO.",
+        "Engineered seamless subscription checkout flows using Stripe.",
+        "Assisted the owner with WordPress website development and IT solutions."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Chat App",
+      "technologies": ["Next.js", "Tailwind", "RAG"],
+      "description": "Built a responsive chat interface implementing optimistic UI updates. Integrated Retrieval-Augmented Generation (RAG) for context-aware analysis."
+    },
+    {
+      "name": "Pantry & Flashcard App",
+      "technologies": ["Next.js", "Firebase Firestore", "Computer Vision API"],
+      "description": "Constructed a real-time inventory system using Firestore listeners. Integrated Computer Vision APIs for automated item logging."
+    },
+    {
+      "name": "Riascope Malaria Detection Device",
+      "technologies": ["TensorFlow Lite", "Flask", "Jinja2", "Vanilla JS"],
+      "description": "Optimized TensorFlow Lite models for edge deployment. Engineered a multi-threaded Flask video pipeline to stream low-latency microscope feeds."
+    }
+  ],
+  "skills": {
+    "languages": ["JavaScript (ES6+)", "TypeScript", "Python", "C++", "SQL", "HTML5", "CSS3/SCSS"],
+    "tools_and_frameworks": ["React", "Next.js", "Redux", "Tailwind CSS", "Git", "Docker", "Firebase", "Vercel", "AWS", "PostgreSQL", "Jest", "CI/CD"],
+    "core_competencies": ["API Development", "Back-End Web Development", "Machine Learning"]
+  }
+}
+</file>
+
+<file path="progress.md">
+# Project Progress: RAG-Powered Q&A System
+
+## Overview
+A modular Python project implementing a Retrieval-Augmented Generation system using a local embedding model, an in-memory FAISS vector database, and the OpenRouter API for generative responses.
+
+## Current State: Phase 1
+- [x] Define architecture and repository scope.
+- [x] Generate structured domain data (`data/resume.json`).
+- [x] Initialize `progress.md` and repository structure via Bash script.
+- [ ] Implement `DocumentProcessor` in `src/rag_qa.py` (Ingestion, Chunking, FAISS Indexing).
+- [ ] Implement isolated unit tests in `tests/test_rag_qa.py`.
+- [ ] Implement OpenRouter LLM generation class.
+- [ ] Connect Retrieval pipeline to Generation pipeline (QA Chain).
+- [ ] Finalize interactive CLI / Notebook interface.
+</file>
+
+<file path="requirements.txt">
+numpy
+faiss-cpu
+sentence-transformers
+requests
+python-dotenv
+# Adding standard testing framework
+pytest
+</file>
+
+<file path="src/rag_qa.ipynb">
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "initial_id",
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "\"\"\"\n",
+    "rag_qa.py\n",
+    "A highly modular Retrieval-Augmented Generation (RAG) implementation.\n",
+    "Phase 1: Data Ingestion, Semantic Chunking, and FAISS Vectorization.\n",
+    "\"\"\""
+   ]
+  },
+  {
+   "metadata": {},
+   "cell_type": "code",
+   "outputs": [],
+   "execution_count": null,
+   "source": [
+    "import json\n",
+    "import logging\n",
+    "import numpy as np\n",
+    "import faiss\n",
+    "from sentence_transformers import SentenceTransformer\n",
+    "from typing import List, Tuple\n",
+    "import os\n",
+    "import requests\n",
+    "from dotenv import load_dotenv"
+   ],
+   "id": "1ba461cea83923a3"
+  },
+  {
+   "metadata": {},
+   "cell_type": "code",
+   "outputs": [],
+   "execution_count": null,
+   "source": [
+    "# Load environment variables from the .env file\n",
+    "load_dotenv()\n",
+    "\n",
+    "# Configure logging for robust error tracking\n",
+    "logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')"
+   ],
+   "id": "42045938f6bf170f"
+  },
+  {
+   "metadata": {},
+   "cell_type": "code",
+   "outputs": [],
+   "execution_count": null,
+   "source": [
+    "class DocumentProcessor:\n",
+    "    \"\"\"\n",
+    "    Handles loading JSON data, converting it to semantic text chunks,\n",
+    "    generating vector embeddings, and creating a searchable FAISS index.\n",
+    "    \"\"\"\n",
+    "\n",
+    "    def __init__(self, embedding_model: str = 'all-MiniLM-L6-v2'):\n",
+    "        \"\"\"\n",
+    "        Initializes the processor with a lightweight local embedding model.\n",
+    "\n",
+    "        Parameters:\n",
+    "            embedding_model (str): HuggingFace model identifier. Defaults to a CPU-friendly model.\n",
+    "        \"\"\"\n",
+    "        try:\n",
+    "            logging.info(f\"Loading embedding model: {embedding_model}...\")\n",
+    "            # Load the model locally. This will download on the first run, then cache.\n",
+    "            self.model = SentenceTransformer(embedding_model)\n",
+    "            # Store the embedding dimension required for initializing FAISS\n",
+    "            self.embedding_dim = self.model.get_sentence_embedding_dimension()\n",
+    "            logging.info(f\"Model loaded successfully. Embedding dimension: {self.embedding_dim}\")\n",
+    "        except Exception as e:\n",
+    "            logging.error(f\"Failed to load embedding model. Error: {e}\")\n",
+    "            raise\n",
+    "\n",
+    "    def process_resume_json(self, filepath: str) -> List[str]:\n",
+    "        \"\"\"\n",
+    "        Loads the structured JSON and flattens it into semantic text chunks.\n",
+    "        Semantic chunking preserves context better than arbitrary character splitting.\n",
+    "\n",
+    "        Parameters:\n",
+    "            filepath (str): Path to the JSON data file.\n",
+    "\n",
+    "        Returns:\n",
+    "            List[str]: A list of coherent text chunks ready for embedding.\n",
+    "        \"\"\"\n",
+    "        chunks = []\n",
+    "        try:\n",
+    "            with open(filepath, 'r', encoding='utf-8') as file:\n",
+    "                data = json.load(file)\n",
+    "\n",
+    "            # 1. Chunk Personal Information\n",
+    "            if 'personal_information' in data:\n",
+    "                info = data['personal_information']\n",
+    "                chunks.append(\n",
+    "                    f\"Profile: {info.get('name', 'N/A')} is located in {info.get('location', 'N/A')}. \"\n",
+    "                    f\"Contact via email at {info.get('email', 'N/A')} or phone at {info.get('phone', 'N/A')}. \"\n",
+    "                    f\"Summary: {info.get('summary', 'N/A')}\"\n",
+    "                )\n",
+    "\n",
+    "            # 2. Chunk Education History\n",
+    "            for edu in data.get('education', []):\n",
+    "                chunks.append(\n",
+    "                    f\"Education: Studied {edu.get('degree')} at {edu.get('institution')} \"\n",
+    "                    f\"from {edu.get('timeline')}.\"\n",
+    "                )\n",
+    "\n",
+    "            # 3. Chunk Professional Experience\n",
+    "            for exp in data.get('experience', []):\n",
+    "                responsibilities = \" \".join(exp.get('responsibilities', []))\n",
+    "                chunks.append(\n",
+    "                    f\"Experience: Worked as {exp.get('role')} at {exp.get('company')} \"\n",
+    "                    f\"({exp.get('timeline')}). Responsibilities included: {responsibilities}\"\n",
+    "                )\n",
+    "\n",
+    "            # 4. Chunk Projects\n",
+    "            for proj in data.get('projects', []):\n",
+    "                tech_stack = \", \".join(proj.get('technologies', []))\n",
+    "                chunks.append(\n",
+    "                    f\"Project: Built {proj.get('name')} using {tech_stack}. \"\n",
+    "                    f\"Description: {proj.get('description')}\"\n",
+    "                )\n",
+    "\n",
+    "            # 5. Chunk Skills\n",
+    "            if 'skills' in data:\n",
+    "                skills = data['skills']\n",
+    "                chunks.append(f\"Technical Skills - Languages: {', '.join(skills.get('languages', []))}\")\n",
+    "                chunks.append(f\"Technical Skills - Tools & Frameworks: {', '.join(skills.get('tools_and_frameworks', []))}\")\n",
+    "                chunks.append(f\"Core Competencies: {', '.join(skills.get('core_competencies', []))}\")\n",
+    "\n",
+    "            logging.info(f\"Successfully extracted {len(chunks)} semantic chunks from {filepath}.\")\n",
+    "            return chunks\n",
+    "\n",
+    "        except FileNotFoundError:\n",
+    "            logging.error(f\"Data file not found at {filepath}.\")\n",
+    "            raise\n",
+    "        except json.JSONDecodeError:\n",
+    "            logging.error(f\"Failed to parse JSON in {filepath}. Ensure it is formatted correctly.\")\n",
+    "            raise\n",
+    "        except Exception as e:\n",
+    "            logging.error(f\"An unexpected error occurred during JSON processing: {e}\")\n",
+    "            raise\n",
+    "\n",
+    "    def create_vector_store(self, chunks: List[str]) -> Tuple[faiss.IndexFlatL2, np.ndarray, List[str]]:\n",
+    "        \"\"\"\n",
+    "        Generates embeddings for the text chunks and builds an in-memory FAISS index.\n",
+    "\n",
+    "        Parameters:\n",
+    "            chunks (List[str]): The semantic text chunks to embed.\n",
+    "\n",
+    "        Returns:\n",
+    "            Tuple containing the FAISS index, the raw embeddings array, and the original chunks.\n",
+    "        \"\"\"\n",
+    "        try:\n",
+    "            logging.info(\"Generating embeddings for text chunks...\")\n",
+    "            # Convert list of strings into a dense numpy array of float32 embeddings\n",
+    "            embeddings = self.model.encode(chunks, convert_to_numpy=True)\n",
+    "\n",
+    "            logging.info(\"Initializing FAISS vector index...\")\n",
+    "            # Use IndexFlatL2 for exact distance search (L2 distance/Euclidean)\n",
+    "            index = faiss.IndexFlatL2(self.embedding_dim)\n",
+    "\n",
+    "            # Populate the index with our computed embeddings\n",
+    "            index.add(embeddings)\n",
+    "            logging.info(f\"Successfully added {index.ntotal} vectors to the FAISS index.\")\n",
+    "\n",
+    "            return index, embeddings, chunks\n",
+    "\n",
+    "        except Exception as e:\n",
+    "            logging.error(f\"Failed to create vector store: {e}\")\n",
+    "            raise"
+   ],
+   "id": "efae2c529db458b6"
+  },
+  {
+   "metadata": {},
+   "cell_type": "code",
+   "outputs": [],
+   "execution_count": null,
+   "source": [
+    "class OpenRouterGenerator:\n",
+    "    \"\"\"\n",
+    "    Handles communication with the OpenRouter API to generate context-aware answers.\n",
+    "    \"\"\"\n",
+    "\n",
+    "    def __init__(self, model: str = \"stepfun/step-3.5-flash:free\"):\n",
+    "        \"\"\"\n",
+    "        Initializes the generator with the specified OpenRouter model.\n",
+    "\n",
+    "        Parameters:\n",
+    "            model (str): The model identifier on OpenRouter.\n",
+    "        \"\"\"\n",
+    "        self.api_key = os.getenv(\"OPENROUTER_API_KEY\")\n",
+    "        if not self.api_key:\n",
+    "            logging.warning(\"OPENROUTER_API_KEY not found in environment variables.\")\n",
+    "\n",
+    "        self.model = model\n",
+    "        self.api_url = \"https://openrouter.ai/api/v1/chat/completions\"\n",
+    "        self.headers = {\n",
+    "            \"Authorization\": f\"Bearer {self.api_key}\",\n",
+    "            \"HTTP-Referer\": \"https://github.com/tobekami\",  # OpenRouter requires a referer\n",
+    "            \"X-Title\": \"Resume RAG QA\",\n",
+    "            \"Content-Type\": \"application/json\"\n",
+    "        }\n",
+    "\n",
+    "    def generate_answer(self, query: str, context: List[str]) -> str:\n",
+    "        \"\"\"\n",
+    "        Constructs the prompt with retrieved context and calls the OpenRouter API.\n",
+    "\n",
+    "        Parameters:\n",
+    "            query (str): The user's question.\n",
+    "            context (List[str]): The semantic chunks retrieved from FAISS.\n",
+    "\n",
+    "        Returns:\n",
+    "            str: The generated text response.\n",
+    "        \"\"\"\n",
+    "        # Join the retrieved chunks into a single context block\n",
+    "        context_text = \"\\n\".join(context)\n",
+    "\n",
+    "        # Construct a strict system prompt to prevent hallucination\n",
+    "        system_prompt = (\n",
+    "            \"You are an AI assistant answering questions about a specific individual based strictly on the provided resume context. \"\n",
+    "            \"If the answer is not contained in the context, say 'I do not have enough information to answer that.' \"\n",
+    "            \"Do not invent or hallucinate information.\"\n",
+    "        )\n",
+    "\n",
+    "        user_prompt = f\"Context:\\n{context_text}\\n\\nQuestion: {query}\"\n",
+    "\n",
+    "        payload = {\n",
+    "            \"model\": self.model,\n",
+    "            \"messages\": [\n",
+    "                {\"role\": \"system\", \"content\": system_prompt},\n",
+    "                {\"role\": \"user\", \"content\": user_prompt}\n",
+    "            ],\n",
+    "            \"temperature\": 0.2  # Low temperature for factual consistency\n",
+    "        }\n",
+    "\n",
+    "        try:\n",
+    "            logging.info(f\"Sending query to OpenRouter using model: {self.model}...\")\n",
+    "            response = requests.post(self.api_url, headers=self.headers, json=payload)\n",
+    "            response.raise_for_status()  # Raise an exception for bad status codes\n",
+    "\n",
+    "            data = response.json()\n",
+    "            return data['choices'][0]['message']['content'].strip()\n",
+    "\n",
+    "        except requests.exceptions.RequestException as e:\n",
+    "            logging.error(f\"OpenRouter API request failed: {e}\")\n",
+    "            return \"Error: Could not connect to the generation API.\"\n",
+    "        except KeyError as e:\n",
+    "            logging.error(f\"Unexpected API response format: {e}\")\n",
+    "            return \"Error: Received malformed response from OpenRouter.\""
+   ],
+   "id": "5d210873261c1e2"
+  },
+  {
+   "metadata": {},
+   "cell_type": "code",
+   "outputs": [],
+   "execution_count": null,
+   "source": [
+    "class RAGPipeline:\n",
+    "    \"\"\"\n",
+    "    Orchestrates the Retrieval-Augmented Generation flow by connecting\n",
+    "    the DocumentProcessor (retriever) and the OpenRouterGenerator (LLM).\n",
+    "    \"\"\"\n",
+    "\n",
+    "    def __init__(self, processor: DocumentProcessor, generator: OpenRouterGenerator):\n",
+    "        self.processor = processor\n",
+    "        self.generator = generator\n",
+    "        self.index = None\n",
+    "        self.stored_chunks = []\n",
+    "\n",
+    "    def setup(self, data_filepath: str):\n",
+    "        \"\"\"Processes the JSON and builds the FAISS index.\"\"\"\n",
+    "        chunks = self.processor.process_resume_json(data_filepath)\n",
+    "        self.index, _, self.stored_chunks = self.processor.create_vector_store(chunks)\n",
+    "        logging.info(\"RAG Pipeline setup complete.\")\n",
+    "\n",
+    "    def query(self, user_question: str, top_k: int = 3) -> str:\n",
+    "        \"\"\"\n",
+    "        Executes the full RAG pipeline: embeds the query, retrieves the top_k chunks,\n",
+    "        and generates an answer.\n",
+    "        \"\"\"\n",
+    "        if self.index is None:\n",
+    "            raise ValueError(\"Pipeline not initialized. Call setup() first.\")\n",
+    "\n",
+    "        try:\n",
+    "            logging.info(f\"Processing query: '{user_question}'\")\n",
+    "            # 1. Embed the user's question\n",
+    "            query_embedding = self.processor.model.encode([user_question], convert_to_numpy=True)\n",
+    "\n",
+    "            # 2. Retrieve the top_k most similar chunks from FAISS\n",
+    "            distances, indices = self.index.search(query_embedding, top_k)\n",
+    "\n",
+    "            # 3. Extract the actual text chunks using the retrieved indices\n",
+    "            retrieved_context = [self.stored_chunks[i] for i in indices[0] if i != -1]\n",
+    "\n",
+    "            logging.info(f\"Retrieved {len(retrieved_context)} relevant context chunks.\")\n",
+    "\n",
+    "            # 4. Pass the context and question to the LLM\n",
+    "            answer = self.generator.generate_answer(user_question, retrieved_context)\n",
+    "            return answer\n",
+    "\n",
+    "        except Exception as e:\n",
+    "            logging.error(f\"Failed to execute RAG query: {e}\")\n",
+    "            raise"
+   ],
+   "id": "b8c49feda8e68e11"
+  },
+  {
+   "metadata": {},
+   "cell_type": "code",
+   "outputs": [],
+   "execution_count": null,
+   "source": [
+    "def main():\n",
+    "    \"\"\"\n",
+    "    Interactive CLI loop for querying the RAG pipeline.\n",
+    "    Initializes the system, indexes the data, and awaits user questions.\n",
+    "    \"\"\"\n",
+    "    print(\"\\n\" + \"=\" * 50)\n",
+    "    print(\"🚀 Resume RAG QA System Initializing...\")\n",
+    "    print(\"=\" * 50)\n",
+    "\n",
+    "    # Define the path to your structured data\n",
+    "    data_filepath = '../data/resume.json' if not os.path.exists('data/resume.json') else 'data/resume.json'\n",
+    "\n",
+    "    # Ensure the data file exists before spinning up the models\n",
+    "    if not os.path.exists(data_filepath):\n",
+    "        logging.error(\n",
+    "            f\"Data file not found at {data_filepath}. Please ensure your resume.json is in the data/ directory.\")\n",
+    "        return\n",
+    "\n",
+    "    try:\n",
+    "        # Initialize the core RAG components\n",
+    "        processor = DocumentProcessor()\n",
+    "        generator = OpenRouterGenerator()\n",
+    "\n",
+    "        # Setup and populate the pipeline\n",
+    "        pipeline = RAGPipeline(processor, generator)\n",
+    "        print(\"\\n📚 Indexing resume data into FAISS...\")\n",
+    "        pipeline.setup(data_filepath)\n",
+    "\n",
+    "        print(\"\\n✅ System ready! Type 'exit' or 'quit' to stop.\")\n",
+    "        print(\"-\" * 50)\n",
+    "\n",
+    "        # Start the interactive query loop\n",
+    "        while True:\n",
+    "            user_question = input(\"\\n🤔 Ask a question about the resume: \").strip()\n",
+    "\n",
+    "            # Handle exit commands\n",
+    "            if user_question.lower() in ['exit', 'quit']:\n",
+    "                print(\"Exiting the QA system. Goodbye!\")\n",
+    "                break\n",
+    "\n",
+    "            # Skip empty inputs\n",
+    "            if not user_question:\n",
+    "                continue\n",
+    "\n",
+    "            print(\"⏳ Retrieving context and generating answer...\")\n",
+    "\n",
+    "            # Execute the RAG query\n",
+    "            answer = pipeline.query(user_question, top_k=3)\n",
+    "\n",
+    "            # Display the result\n",
+    "            print(\"\\n🤖 Answer:\")\n",
+    "            print(answer)\n",
+    "            print(\"-\" * 50)\n",
+    "\n",
+    "    except Exception as e:\n",
+    "        logging.error(f\"A critical error occurred during execution: {e}\")"
+   ],
+   "id": "ddcf0e0f8b60af7e"
+  },
+  {
+   "metadata": {},
+   "cell_type": "code",
+   "outputs": [],
+   "execution_count": null,
+   "source": [
+    "if __name__ == \"__main__\":\n",
+    "    main()"
+   ],
+   "id": "338f953d8209739a"
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 2
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython2",
+   "version": "2.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
+</file>
+
+<file path="src/rag_qa.py">
+"""
+rag_qa.py
+A highly modular Retrieval-Augmented Generation (RAG) implementation.
+Phase 1: Data Ingestion, Semantic Chunking, and FAISS Vectorization.
+"""
+
+import json
+import logging
+import numpy as np
+import faiss
+from sentence_transformers import SentenceTransformer
+from typing import List, Tuple
+import os
+import requests
+from dotenv import load_dotenv
+
+# Load environment variables from the .env file
+load_dotenv()
+
+# Configure logging for robust error tracking
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
+
+class DocumentProcessor:
+    """
+    Handles loading JSON data, converting it to semantic text chunks,
+    generating vector embeddings, and creating a searchable FAISS index.
+    """
+
+    def __init__(self, embedding_model: str = 'all-MiniLM-L6-v2'):
+        """
+        Initializes the processor with a lightweight local embedding model.
+
+        Parameters:
+            embedding_model (str): HuggingFace model identifier. Defaults to a CPU-friendly model.
+        """
+        try:
+            logging.info(f"Loading embedding model: {embedding_model}...")
+            # Load the model locally. This will download on the first run, then cache.
+            self.model = SentenceTransformer(embedding_model)
+            # Store the embedding dimension required for initializing FAISS
+            self.embedding_dim = self.model.get_sentence_embedding_dimension()
+            logging.info(f"Model loaded successfully. Embedding dimension: {self.embedding_dim}")
+        except Exception as e:
+            logging.error(f"Failed to load embedding model. Error: {e}")
+            raise
+
+    def process_resume_json(self, filepath: str) -> List[str]:
+        """
+        Loads the structured JSON and flattens it into semantic text chunks.
+        Semantic chunking preserves context better than arbitrary character splitting.
+
+        Parameters:
+            filepath (str): Path to the JSON data file.
+
+        Returns:
+            List[str]: A list of coherent text chunks ready for embedding.
+        """
+        chunks = []
+        try:
+            with open(filepath, 'r', encoding='utf-8') as file:
+                data = json.load(file)
+
+            # 1. Chunk Personal Information
+            if 'personal_information' in data:
+                info = data['personal_information']
+                chunks.append(
+                    f"Profile: {info.get('name', 'N/A')} is located in {info.get('location', 'N/A')}. "
+                    f"Contact via email at {info.get('email', 'N/A')} or phone at {info.get('phone', 'N/A')}. "
+                    f"Summary: {info.get('summary', 'N/A')}"
+                )
+
+            # 2. Chunk Education History
+            for edu in data.get('education', []):
+                chunks.append(
+                    f"Education: Studied {edu.get('degree')} at {edu.get('institution')} "
+                    f"from {edu.get('timeline')}."
+                )
+
+            # 3. Chunk Professional Experience
+            for exp in data.get('experience', []):
+                responsibilities = " ".join(exp.get('responsibilities', []))
+                chunks.append(
+                    f"Experience: Worked as {exp.get('role')} at {exp.get('company')} "
+                    f"({exp.get('timeline')}). Responsibilities included: {responsibilities}"
+                )
+
+            # 4. Chunk Projects
+            for proj in data.get('projects', []):
+                tech_stack = ", ".join(proj.get('technologies', []))
+                chunks.append(
+                    f"Project: Built {proj.get('name')} using {tech_stack}. "
+                    f"Description: {proj.get('description')}"
+                )
+
+            # 5. Chunk Skills
+            if 'skills' in data:
+                skills = data['skills']
+                chunks.append(f"Technical Skills - Languages: {', '.join(skills.get('languages', []))}")
+                chunks.append(f"Technical Skills - Tools & Frameworks: {', '.join(skills.get('tools_and_frameworks', []))}")
+                chunks.append(f"Core Competencies: {', '.join(skills.get('core_competencies', []))}")
+
+            logging.info(f"Successfully extracted {len(chunks)} semantic chunks from {filepath}.")
+            return chunks
+
+        except FileNotFoundError:
+            logging.error(f"Data file not found at {filepath}.")
+            raise
+        except json.JSONDecodeError:
+            logging.error(f"Failed to parse JSON in {filepath}. Ensure it is formatted correctly.")
+            raise
+        except Exception as e:
+            logging.error(f"An unexpected error occurred during JSON processing: {e}")
+            raise
+
+    def create_vector_store(self, chunks: List[str]) -> Tuple[faiss.IndexFlatL2, np.ndarray, List[str]]:
+        """
+        Generates embeddings for the text chunks and builds an in-memory FAISS index.
+
+        Parameters:
+            chunks (List[str]): The semantic text chunks to embed.
+
+        Returns:
+            Tuple containing the FAISS index, the raw embeddings array, and the original chunks.
+        """
+        try:
+            logging.info("Generating embeddings for text chunks...")
+            # Convert list of strings into a dense numpy array of float32 embeddings
+            embeddings = self.model.encode(chunks, convert_to_numpy=True)
+
+            logging.info("Initializing FAISS vector index...")
+            # Use IndexFlatL2 for exact distance search (L2 distance/Euclidean)
+            index = faiss.IndexFlatL2(self.embedding_dim)
+
+            # Populate the index with our computed embeddings
+            index.add(embeddings)
+            logging.info(f"Successfully added {index.ntotal} vectors to the FAISS index.")
+
+            return index, embeddings, chunks
+
+        except Exception as e:
+            logging.error(f"Failed to create vector store: {e}")
+            raise
+
+class OpenRouterGenerator:
+    """
+    Handles communication with the OpenRouter API to generate context-aware answers.
+    """
+
+    def __init__(self, model: str = "stepfun/step-3.5-flash:free"):
+        """
+        Initializes the generator with the specified OpenRouter model.
+
+        Parameters:
+            model (str): The model identifier on OpenRouter.
+        """
+        self.api_key = os.getenv("OPENROUTER_API_KEY")
+        if not self.api_key:
+            logging.warning("OPENROUTER_API_KEY not found in environment variables.")
+
+        self.model = model
+        self.api_url = "https://openrouter.ai/api/v1/chat/completions"
+        self.headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "HTTP-Referer": "https://github.com/tobekami",  # OpenRouter requires a referer
+            "X-Title": "Resume RAG QA",
+            "Content-Type": "application/json"
+        }
+
+    def generate_answer(self, query: str, context: List[str]) -> str:
+        """
+        Constructs the prompt with retrieved context and calls the OpenRouter API.
+
+        Parameters:
+            query (str): The user's question.
+            context (List[str]): The semantic chunks retrieved from FAISS.
+
+        Returns:
+            str: The generated text response.
+        """
+        # Join the retrieved chunks into a single context block
+        context_text = "\n".join(context)
+
+        # Construct a strict system prompt to prevent hallucination
+        system_prompt = (
+            "You are an AI assistant answering questions about a specific individual based strictly on the provided resume context. "
+            "If the answer is not contained in the context, say 'I do not have enough information to answer that.' "
+            "Do not invent or hallucinate information."
+        )
+
+        user_prompt = f"Context:\n{context_text}\n\nQuestion: {query}"
+
+        payload = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ],
+            "temperature": 0.2  # Low temperature for factual consistency
+        }
+
+        try:
+            logging.info(f"Sending query to OpenRouter using model: {self.model}...")
+            response = requests.post(self.api_url, headers=self.headers, json=payload)
+            response.raise_for_status()  # Raise an exception for bad status codes
+
+            data = response.json()
+            return data['choices'][0]['message']['content'].strip()
+
+        except requests.exceptions.RequestException as e:
+            logging.error(f"OpenRouter API request failed: {e}")
+            return "Error: Could not connect to the generation API."
+        except KeyError as e:
+            logging.error(f"Unexpected API response format: {e}")
+            return "Error: Received malformed response from OpenRouter."
+
+
+class RAGPipeline:
+    """
+    Orchestrates the Retrieval-Augmented Generation flow by connecting
+    the DocumentProcessor (retriever) and the OpenRouterGenerator (LLM).
+    """
+
+    def __init__(self, processor: DocumentProcessor, generator: OpenRouterGenerator):
+        self.processor = processor
+        self.generator = generator
+        self.index = None
+        self.stored_chunks = []
+
+    def setup(self, data_filepath: str):
+        """Processes the JSON and builds the FAISS index."""
+        chunks = self.processor.process_resume_json(data_filepath)
+        self.index, _, self.stored_chunks = self.processor.create_vector_store(chunks)
+        logging.info("RAG Pipeline setup complete.")
+
+    def query(self, user_question: str, top_k: int = 3) -> str:
+        """
+        Executes the full RAG pipeline: embeds the query, retrieves the top_k chunks,
+        and generates an answer.
+        """
+        if self.index is None:
+            raise ValueError("Pipeline not initialized. Call setup() first.")
+
+        try:
+            logging.info(f"Processing query: '{user_question}'")
+            # 1. Embed the user's question
+            query_embedding = self.processor.model.encode([user_question], convert_to_numpy=True)
+
+            # 2. Retrieve the top_k most similar chunks from FAISS
+            distances, indices = self.index.search(query_embedding, top_k)
+
+            # 3. Extract the actual text chunks using the retrieved indices
+            retrieved_context = [self.stored_chunks[i] for i in indices[0] if i != -1]
+
+            logging.info(f"Retrieved {len(retrieved_context)} relevant context chunks.")
+
+            # 4. Pass the context and question to the LLM
+            answer = self.generator.generate_answer(user_question, retrieved_context)
+            return answer
+
+        except Exception as e:
+            logging.error(f"Failed to execute RAG query: {e}")
+            raise
+
+
+def main():
+    """
+    Interactive CLI loop for querying the RAG pipeline.
+    Initializes the system, indexes the data, and awaits user questions.
+    """
+    print("\n" + "=" * 50)
+    print("🚀 Resume RAG QA System Initializing...")
+    print("=" * 50)
+
+    # Define the path to your structured data
+    data_filepath = '../data/resume.json' if not os.path.exists('data/resume.json') else 'data/resume.json'
+
+    # Ensure the data file exists before spinning up the models
+    if not os.path.exists(data_filepath):
+        logging.error(
+            f"Data file not found at {data_filepath}. Please ensure your resume.json is in the data/ directory.")
+        return
+
+    try:
+        # Initialize the core RAG components
+        processor = DocumentProcessor()
+        generator = OpenRouterGenerator()
+
+        # Setup and populate the pipeline
+        pipeline = RAGPipeline(processor, generator)
+        print("\n📚 Indexing resume data into FAISS...")
+        pipeline.setup(data_filepath)
+
+        print("\n✅ System ready! Type 'exit' or 'quit' to stop.")
+        print("-" * 50)
+
+        # Start the interactive query loop
+        while True:
+            user_question = input("\n🤔 Ask a question about the resume: ").strip()
+
+            # Handle exit commands
+            if user_question.lower() in ['exit', 'quit']:
+                print("Exiting the QA system. Goodbye!")
+                break
+
+            # Skip empty inputs
+            if not user_question:
+                continue
+
+            print("⏳ Retrieving context and generating answer...")
+
+            # Execute the RAG query
+            answer = pipeline.query(user_question, top_k=3)
+
+            # Display the result
+            print("\n🤖 Answer:")
+            print(answer)
+            print("-" * 50)
+
+    except Exception as e:
+        logging.error(f"A critical error occurred during execution: {e}")
+
+
+if __name__ == "__main__":
+    main()
+</file>
+
+<file path="tests/test_rag_qa.py">
+"""
+test_rag_qa.py
+Automated unit tests for the RAG data ingestion and vectorization modules.
+"""
+
+import json
+import pytest
+from src.rag_qa import DocumentProcessor
+
+
+# ==========================================
+# FIXTURES
+# ==========================================
+
+@pytest.fixture
+def dummy_resume_json(tmp_path):
+    """
+    Creates a temporary JSON file with mock resume data to isolate
+    tests from the production data directory.
+    """
+    data = {
+        "personal_information": {
+            "name": "Jane Doe",
+            "location": "Test City",
+            "email": "jane@example.com",
+            "phone": "555-0000",
+            "summary": "A mock software engineer."
+        },
+        "education": [
+            {
+                "institution": "Test University",
+                "degree": "BSc Computer Science",
+                "timeline": "2020 - 2024"
+            }
+        ]
+    }
+    # Write the mock data to a temporary file managed by pytest
+    filepath = tmp_path / "dummy_resume.json"
+    with open(filepath, 'w', encoding='utf-8') as f:
+        json.dump(data, f)
+
+    return str(filepath)
+
+
+@pytest.fixture(scope="module")
+def processor():
+    """
+    Initializes the DocumentProcessor once for the entire test module
+    to avoid repeatedly loading the embedding model into memory.
+    """
+    return DocumentProcessor()
+
+
+# ==========================================
+# TEST CASES
+# ==========================================
+
+def test_initialization(processor):
+    """Verifies that the embedding model loads correctly with the expected dimensions."""
+    assert processor.embedding_dim == 384, "Embedding dimension mismatch for all-MiniLM-L6-v2."
+
+
+def test_process_resume_json(processor, dummy_resume_json):
+    """Ensures JSON is correctly parsed and flattened into semantic chunks."""
+    chunks = processor.process_resume_json(dummy_resume_json)
+
+    # We expect 2 chunks based on our dummy data (1 personal info, 1 education)
+    assert len(chunks) == 2, f"Expected 2 chunks, but got {len(chunks)}."
+    assert isinstance(chunks[0], str), "Chunks must be returned as strings."
+    assert "Jane Doe" in chunks[0], "Expected data not found in chunk."
+
+
+def test_create_vector_store(processor, dummy_resume_json):
+    """Validates that FAISS indexing generates the correct number of vectors."""
+    chunks = processor.process_resume_json(dummy_resume_json)
+    index, embeddings, stored_chunks = processor.create_vector_store(chunks)
+
+    assert index.ntotal == len(chunks), "FAISS index count does not match input chunk count."
+    assert embeddings.shape[1] == processor.embedding_dim, "Embedding matrix dimension mismatch."
+    assert len(stored_chunks) == len(chunks), "Stored chunks length mismatch."
+
+
+from unittest.mock import patch, MagicMock
+from src.rag_qa import OpenRouterGenerator, RAGPipeline
+
+
+# ==========================================
+# GENERATOR & PIPELINE TESTS
+# ==========================================
+
+@pytest.fixture
+def mock_generator():
+    """Initializes the OpenRouterGenerator with a dummy API key for testing."""
+    with patch.dict('os.environ', {'OPENROUTER_API_KEY': 'dummy_key'}):
+        return OpenRouterGenerator()
+
+
+@patch('src.rag_qa.requests.post')
+def test_generate_answer_success(mock_post, mock_generator):
+    """Verifies that the generator correctly parses a successful API response."""
+    # Mock the OpenRouter API JSON response structure
+    mock_response = MagicMock()
+    mock_response.json.return_value = {
+        'choices': [{'message': {'content': 'Jane Doe is a software engineer.'}}]
+    }
+    mock_response.raise_for_status.return_value = None
+    mock_post.return_value = mock_response
+
+    query = "Who is Jane Doe?"
+    context = ["Profile: Jane Doe is located in Test City. Summary: A mock software engineer."]
+
+    answer = mock_generator.generate_answer(query, context)
+
+    assert "Jane Doe is a software engineer" in answer
+    # Verify the API was called exactly once
+    mock_post.assert_called_once()
+
+
+def test_rag_pipeline_integration(processor, mock_generator, dummy_resume_json):
+    """
+    Tests the full pipeline flow: indexing data, retrieving context,
+    and passing it to the mocked generator.
+    """
+    # 1. Setup the pipeline
+    pipeline = RAGPipeline(processor, mock_generator)
+    pipeline.setup(dummy_resume_json)
+
+    # Verify setup populated the FAISS index
+    assert pipeline.index is not None
+    assert len(pipeline.stored_chunks) == 2
+
+    # 2. Mock the generator's response to bypass the actual API call
+    with patch.object(mock_generator, 'generate_answer', return_value="Mocked pipeline answer.") as mock_gen_method:
+        answer = pipeline.query("What degree does Jane have?", top_k=1)
+
+        assert answer == "Mocked pipeline answer."
+        # Verify the generator was called with the retrieved context
+        mock_gen_method.assert_called_once()
+
+        # Check that context was actually passed to the generator
+        called_args, called_kwargs = mock_gen_method.call_args
+        passed_context = called_args[1]
+        assert len(passed_context) == 1  # We requested top_k=1
+</file>
+
+</files>

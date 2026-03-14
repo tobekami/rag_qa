@@ -1,0 +1,91 @@
+{
+  "personal_information": {
+    "name": "Tobechukwu Emelife",
+    "location": "Lagos, Nigeria",
+    "email": "brunoemelife@gmail.com",
+    "phone": "+234-815-698-5315",
+    "linkedin": "linkedin.com/in/tobechukwuemelife",
+    "github": "github.com/tobekami",
+    "summary": "Electrical and Electronics Engineering undergraduate at the University of Lagos with a strong passion for software engineering and finance. Experienced in developing responsive websites, React applications, and integrating machine learning tools."
+  },
+  "education": [
+    {
+      "institution": "University of Lagos",
+      "degree": "BSc, Electrical and Electronics Engineering",
+      "timeline": "2018 - 2026"
+    }
+  ],
+  "experience": [
+    {
+      "company": "FlexiSAF Edusoft Limited",
+      "role": "Artificial Intelligence Engineer",
+      "timeline": "January 2026 - Present",
+      "location": "Lagos State, Nigeria"
+    },
+    {
+      "company": "Riascope Systems Limited",
+      "role": "Chief Technology Officer / Software Engineer",
+      "timeline": "November 2024 - Present",
+      "location": "Lagos State, Nigeria"
+    },
+    {
+      "company": "Helloworld Technologies Limited",
+      "role": "Fullstack Software Engineer",
+      "timeline": "October 2025 - Present"
+    },
+    {
+      "company": "UNILAG Design Studio",
+      "role": "Engineering Intern",
+      "timeline": "April 2024 - Present",
+      "location": "Lagos, Nigeria",
+      "responsibilities": [
+        "Developed interactive internal dashboards for IoT data visualization using React.",
+        "Bridged hardware and web layers by designing intuitive UI controls for IoT devices.",
+        "Refactored legacy frontend code to improve component reusability."
+      ]
+    },
+    {
+      "company": "HeadStarter AI",
+      "role": "Software Engineering Fellow",
+      "timeline": "July 2024 - October 2024",
+      "location": "Remote",
+      "responsibilities": [
+        "Engineered responsive AI apps using React/TypeScript, implementing SSR.",
+        "Orchestrated state management using custom React Hooks and Context API.",
+        "Established CI/CD pipelines with GitHub Actions for automated linting and testing."
+      ]
+    },
+    {
+      "company": "SalvaHelp",
+      "role": "Web Developer & IT Support",
+      "timeline": "October 2023 - January 2024",
+      "responsibilities": [
+        "Architected high-performance marketing site, optimizing critical rendering paths for SEO.",
+        "Engineered seamless subscription checkout flows using Stripe.",
+        "Assisted the owner with WordPress website development and IT solutions."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Chat App",
+      "technologies": ["Next.js", "Tailwind", "RAG"],
+      "description": "Built a responsive chat interface implementing optimistic UI updates. Integrated Retrieval-Augmented Generation (RAG) for context-aware analysis."
+    },
+    {
+      "name": "Pantry & Flashcard App",
+      "technologies": ["Next.js", "Firebase Firestore", "Computer Vision API"],
+      "description": "Constructed a real-time inventory system using Firestore listeners. Integrated Computer Vision APIs for automated item logging."
+    },
+    {
+      "name": "Riascope Malaria Detection Device",
+      "technologies": ["TensorFlow Lite", "Flask", "Jinja2", "Vanilla JS"],
+      "description": "Optimized TensorFlow Lite models for edge deployment. Engineered a multi-threaded Flask video pipeline to stream low-latency microscope feeds."
+    }
+  ],
+  "skills": {
+    "languages": ["JavaScript (ES6+)", "TypeScript", "Python", "C++", "SQL", "HTML5", "CSS3/SCSS"],
+    "tools_and_frameworks": ["React", "Next.js", "Redux", "Tailwind CSS", "Git", "Docker", "Firebase", "Vercel", "AWS", "PostgreSQL", "Jest", "CI/CD"],
+    "core_competencies": ["API Development", "Back-End Web Development", "Machine Learning"]
+  }
+}
