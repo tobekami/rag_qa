@@ -42,6 +42,7 @@ The content is organized as follows:
 <directory_structure>
 data/resume.json
 progress.md
+README.md
 requirements.txt
 src/__init__.py
 src/rag_qa.ipynb
@@ -157,11 +158,98 @@ A modular Python project implementing a Retrieval-Augmented Generation system us
 - [x] Define architecture and repository scope.
 - [x] Generate structured domain data (`data/resume.json`).
 - [x] Initialize `progress.md` and repository structure via Bash script.
-- [ ] Implement `DocumentProcessor` in `src/rag_qa.py` (Ingestion, Chunking, FAISS Indexing).
-- [ ] Implement isolated unit tests in `tests/test_rag_qa.py`.
-- [ ] Implement OpenRouter LLM generation class.
-- [ ] Connect Retrieval pipeline to Generation pipeline (QA Chain).
-- [ ] Finalize interactive CLI / Notebook interface.
+- [x] Implement `DocumentProcessor` in `src/rag_qa.py` (Ingestion, Chunking, FAISS Indexing).
+- [x] Implement isolated unit tests in `tests/test_rag_qa.py`.
+- [x] Implement OpenRouter LLM generation class.
+- [x] Connect Retrieval pipeline to Generation pipeline (QA Chain).
+- [x] Finalize interactive CLI / Notebook interface.
+</file>
+
+<file path="README.md">
+My apologies, I completely missed the mark on the formatting! Here is the README rendered directly so it acts as normal text without the annoying markdown wrappers.
+
+# Resume RAG Q&A System
+
+A modular Retrieval-Augmented Generation (RAG) system designed to interactively answer questions based on a structured domain dataset (a professional resume).
+
+This project strictly separates data ingestion, vector search, and LLM generation into isolated, testable classes. It prioritizes privacy and speed by generating semantic embeddings locally while leveraging the OpenRouter API for high-quality, context-aware text generation.
+
+## 🏗 Architecture
+
+* **Data Source:** JSON-formatted resume/domain data (`data/resume.json`).
+* **Embeddings:** Local, CPU-friendly HuggingFace model (`sentence-transformers/all-MiniLM-L6-v2`).
+* **Vector Database:** In-memory `FAISS` index for exact L2 distance search.
+* **LLM Generation:** OpenRouter API (Default: `stepfun/step-3.5-flash:free`).
+* **Testing:** Automated unit and integration testing via `pytest` with API mocking.
+
+## 📂 Repository Structure
+
+* **data/**
+* `resume.json` — The structured domain knowledge
+
+
+* **src/**
+* `__init__.py`
+* `rag_qa.py` — Core logic (Ingestion, Indexing, Pipeline, CLI)
+* `rag_qa.ipynb` — Interactive Jupyter Notebook interface
+
+
+* **tests/**
+* `__init__.py`
+* `test_rag_qa.py` — Isolated unit tests with mocked API calls
+
+
+* **Root Files**
+* `.env` — Environment variables (API Keys - DO NOT COMMIT)
+* `progress.md` — Project state and tracking
+* `requirements.txt` — Python dependencies
+
+
+
+## ⚙️ Prerequisites & Setup
+
+**1. Clone the repository and navigate to the root directory.**
+
+**2. Create and activate a virtual environment:**
+
+* **Windows:** `python -m venv .venv` and then `.venv\Scripts\activate`
+* **macOS/Linux:** `python -m venv .venv` and then `source .venv/bin/activate`
+
+**3. Install the dependencies:**
+Run `pip install -r requirements.txt`
+
+**4. Configure Environment Variables:**
+Create a `.env` file in the root directory and add your OpenRouter API key: `OPENROUTER_API_KEY=your_actual_api_key_here`
+
+## 🚀 Usage
+
+You can interact with the RAG pipeline using either the command-line interface or the Jupyter Notebook.
+
+### Option A: Command Line Interface (CLI)
+
+Run the core script from the root directory to start the interactive terminal loop:
+`python src/rag_qa.py`
+
+*Type your questions at the prompt, and type `exit` or `quit` to gracefully shut down the system.*
+
+### Option B: Jupyter Notebook
+
+Launch Jupyter and open `src/rag_qa.ipynb`.
+`jupyter notebook`
+
+* **Note for IDE Users:** If your IDE requests a token to run the notebook server, open your terminal, ensure your virtual environment is active, and run `jupyter server list`. Copy the token string provided in the output to authenticate your session.
+* Execute the setup cell, then use the query cell to iteratively test different questions.
+
+## 🧪 Testing
+
+This project uses `pytest` for Test-Driven Development. The test suite includes fixtures that dynamically generate mock JSON data and intercept HTTP requests to ensure tests are fast, offline, and reliable.
+
+To run the test suite from the root directory, execute:
+`pytest -v tests/`
+
+---
+
+Would you like me to write up a quick Git commit message so we can lock this version in, or is there another feature we need to add?
 </file>
 
 <file path="requirements.txt">
@@ -179,25 +267,43 @@ pytest
  "cells": [
   {
    "cell_type": "code",
-   "execution_count": null,
    "id": "initial_id",
    "metadata": {
-    "collapsed": true
+    "collapsed": true,
+    "ExecuteTime": {
+     "end_time": "2026-03-14T17:16:17.116270Z",
+     "start_time": "2026-03-14T17:16:17.108378Z"
+    }
    },
-   "outputs": [],
    "source": [
     "\"\"\"\n",
     "rag_qa.py\n",
     "A highly modular Retrieval-Augmented Generation (RAG) implementation.\n",
     "Phase 1: Data Ingestion, Semantic Chunking, and FAISS Vectorization.\n",
     "\"\"\""
-   ]
+   ],
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'\\nrag_qa.py\\nA highly modular Retrieval-Augmented Generation (RAG) implementation.\\nPhase 1: Data Ingestion, Semantic Chunking, and FAISS Vectorization.\\n'"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "execution_count": 9
   },
   {
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2026-03-14T17:16:17.174667Z",
+     "start_time": "2026-03-14T17:16:17.170643Z"
+    }
+   },
    "cell_type": "code",
-   "outputs": [],
-   "execution_count": null,
    "source": [
     "import json\n",
     "import logging\n",
@@ -209,13 +315,18 @@ pytest
     "import requests\n",
     "from dotenv import load_dotenv"
    ],
-   "id": "1ba461cea83923a3"
+   "id": "1ba461cea83923a3",
+   "outputs": [],
+   "execution_count": 10
   },
   {
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2026-03-14T17:16:17.205328Z",
+     "start_time": "2026-03-14T17:16:17.199957Z"
+    }
+   },
    "cell_type": "code",
-   "outputs": [],
-   "execution_count": null,
    "source": [
     "# Load environment variables from the .env file\n",
     "load_dotenv()\n",
@@ -223,13 +334,18 @@ pytest
     "# Configure logging for robust error tracking\n",
     "logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')"
    ],
-   "id": "42045938f6bf170f"
+   "id": "42045938f6bf170f",
+   "outputs": [],
+   "execution_count": 11
   },
   {
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2026-03-14T17:16:17.236744Z",
+     "start_time": "2026-03-14T17:16:17.219603Z"
+    }
+   },
    "cell_type": "code",
-   "outputs": [],
-   "execution_count": null,
    "source": [
     "class DocumentProcessor:\n",
     "    \"\"\"\n",
@@ -352,13 +468,18 @@ pytest
     "            logging.error(f\"Failed to create vector store: {e}\")\n",
     "            raise"
    ],
-   "id": "efae2c529db458b6"
+   "id": "efae2c529db458b6",
+   "outputs": [],
+   "execution_count": 12
   },
   {
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2026-03-14T17:16:17.254893Z",
+     "start_time": "2026-03-14T17:16:17.245198Z"
+    }
+   },
    "cell_type": "code",
-   "outputs": [],
-   "execution_count": null,
    "source": [
     "class OpenRouterGenerator:\n",
     "    \"\"\"\n",
@@ -432,13 +553,18 @@ pytest
     "            logging.error(f\"Unexpected API response format: {e}\")\n",
     "            return \"Error: Received malformed response from OpenRouter.\""
    ],
-   "id": "5d210873261c1e2"
+   "id": "5d210873261c1e2",
+   "outputs": [],
+   "execution_count": 13
   },
   {
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2026-03-14T17:16:17.272380Z",
+     "start_time": "2026-03-14T17:16:17.261820Z"
+    }
+   },
    "cell_type": "code",
-   "outputs": [],
-   "execution_count": null,
    "source": [
     "class RAGPipeline:\n",
     "    \"\"\"\n",
@@ -487,83 +613,193 @@ pytest
     "            logging.error(f\"Failed to execute RAG query: {e}\")\n",
     "            raise"
    ],
-   "id": "b8c49feda8e68e11"
+   "id": "b8c49feda8e68e11",
+   "outputs": [],
+   "execution_count": 14
   },
   {
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2026-03-14T17:16:31.455843Z",
+     "start_time": "2026-03-14T17:16:17.280974Z"
+    }
+   },
    "cell_type": "code",
-   "outputs": [],
-   "execution_count": null,
    "source": [
-    "def main():\n",
-    "    \"\"\"\n",
-    "    Interactive CLI loop for querying the RAG pipeline.\n",
-    "    Initializes the system, indexes the data, and awaits user questions.\n",
-    "    \"\"\"\n",
-    "    print(\"\\n\" + \"=\" * 50)\n",
-    "    print(\"🚀 Resume RAG QA System Initializing...\")\n",
-    "    print(\"=\" * 50)\n",
+    "# 1. Dynamically find the project root to ensure we don't break on file paths\n",
+    "notebook_dir = os.getcwd()\n",
+    "project_root = os.path.dirname(notebook_dir) if notebook_dir.endswith('src') else notebook_dir\n",
     "\n",
-    "    # Define the path to your structured data\n",
-    "    data_filepath = '../data/resume.json' if not os.path.exists('data/resume.json') else 'data/resume.json'\n",
+    "# 2. Explicitly load the .env file from the root directory\n",
+    "env_path = os.path.join(project_root, '.env')\n",
+    "load_dotenv(dotenv_path=env_path)\n",
     "\n",
-    "    # Ensure the data file exists before spinning up the models\n",
-    "    if not os.path.exists(data_filepath):\n",
-    "        logging.error(\n",
-    "            f\"Data file not found at {data_filepath}. Please ensure your resume.json is in the data/ directory.\")\n",
-    "        return\n",
+    "# 3. Resolve the exact path to your resume data\n",
+    "data_filepath = os.path.join(project_root, 'data', 'resume.json')\n",
     "\n",
-    "    try:\n",
-    "        # Initialize the core RAG components\n",
-    "        processor = DocumentProcessor()\n",
-    "        generator = OpenRouterGenerator()\n",
+    "# 4. Initialize the system\n",
+    "if not os.path.exists(data_filepath):\n",
+    "    print(f\"❌ Error: Could not find data file at {data_filepath}\")\n",
+    "else:\n",
+    "    # Ensure API key is loaded to avoid silent failures\n",
+    "    if not os.getenv(\"OPENROUTER_API_KEY\"):\n",
+    "        print(\"⚠️ Warning: OPENROUTER_API_KEY not found. The LLM generation will fail.\")\n",
     "\n",
-    "        # Setup and populate the pipeline\n",
-    "        pipeline = RAGPipeline(processor, generator)\n",
-    "        print(\"\\n📚 Indexing resume data into FAISS...\")\n",
-    "        pipeline.setup(data_filepath)\n",
+    "    processor = DocumentProcessor()\n",
+    "    generator = OpenRouterGenerator()\n",
+    "    pipeline = RAGPipeline(processor, generator)\n",
     "\n",
-    "        print(\"\\n✅ System ready! Type 'exit' or 'quit' to stop.\")\n",
-    "        print(\"-\" * 50)\n",
-    "\n",
-    "        # Start the interactive query loop\n",
-    "        while True:\n",
-    "            user_question = input(\"\\n🤔 Ask a question about the resume: \").strip()\n",
-    "\n",
-    "            # Handle exit commands\n",
-    "            if user_question.lower() in ['exit', 'quit']:\n",
-    "                print(\"Exiting the QA system. Goodbye!\")\n",
-    "                break\n",
-    "\n",
-    "            # Skip empty inputs\n",
-    "            if not user_question:\n",
-    "                continue\n",
-    "\n",
-    "            print(\"⏳ Retrieving context and generating answer...\")\n",
-    "\n",
-    "            # Execute the RAG query\n",
-    "            answer = pipeline.query(user_question, top_k=3)\n",
-    "\n",
-    "            # Display the result\n",
-    "            print(\"\\n🤖 Answer:\")\n",
-    "            print(answer)\n",
-    "            print(\"-\" * 50)\n",
-    "\n",
-    "    except Exception as e:\n",
-    "        logging.error(f\"A critical error occurred during execution: {e}\")"
+    "    print(f\"📚 Loading data from {data_filepath} and indexing into FAISS...\")\n",
+    "    pipeline.setup(data_filepath)\n",
+    "    print(\"✅ System ready! You can now run the query cell below.\")"
    ],
-   "id": "ddcf0e0f8b60af7e"
+   "id": "ddcf0e0f8b60af7e",
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "INFO: Loading embedding model: all-MiniLM-L6-v2...\n",
+      "INFO: Use pytorch device_name: cpu\n",
+      "INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json \"HTTP/1.1 307 Temporary Redirect\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json \"HTTP/1.1 200 OK\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json \"HTTP/1.1 307 Temporary Redirect\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json \"HTTP/1.1 200 OK\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config_sentence_transformers.json \"HTTP/1.1 307 Temporary Redirect\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config_sentence_transformers.json \"HTTP/1.1 200 OK\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/README.md \"HTTP/1.1 307 Temporary Redirect\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/README.md \"HTTP/1.1 200 OK\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/modules.json \"HTTP/1.1 307 Temporary Redirect\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/modules.json \"HTTP/1.1 200 OK\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/sentence_bert_config.json \"HTTP/1.1 307 Temporary Redirect\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/sentence_bert_config.json \"HTTP/1.1 200 OK\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/adapter_config.json \"HTTP/1.1 404 Not Found\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json \"HTTP/1.1 307 Temporary Redirect\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json \"HTTP/1.1 200 OK\"\n",
+      "Loading weights: 100%|██████████| 103/103 [00:00<00:00, 3797.99it/s]\n",
+      "\u001B[1mBertModel LOAD REPORT\u001B[0m from: sentence-transformers/all-MiniLM-L6-v2\n",
+      "Key                     | Status     |  | \n",
+      "------------------------+------------+--+-\n",
+      "embeddings.position_ids | UNEXPECTED |  | \n",
+      "\n",
+      "\u001B[3mNotes:\n",
+      "- UNEXPECTED\u001B[3m\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\u001B[0m\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/config.json \"HTTP/1.1 307 Temporary Redirect\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/config.json \"HTTP/1.1 200 OK\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/tokenizer_config.json \"HTTP/1.1 307 Temporary Redirect\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/tokenizer_config.json \"HTTP/1.1 200 OK\"\n",
+      "INFO: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main/additional_chat_templates?recursive=false&expand=false \"HTTP/1.1 404 Not Found\"\n",
+      "INFO: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2/tree/main?recursive=true&expand=false \"HTTP/1.1 200 OK\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/1_Pooling/config.json \"HTTP/1.1 307 Temporary Redirect\"\n",
+      "INFO: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/sentence-transformers/all-MiniLM-L6-v2/c9745ed1d9f207416be6d2e6f8de32d1f16199bf/1_Pooling%2Fconfig.json \"HTTP/1.1 200 OK\"\n",
+      "INFO: HTTP Request: GET https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2 \"HTTP/1.1 200 OK\"\n",
+      "INFO: Model loaded successfully. Embedding dimension: 384\n",
+      "INFO: Successfully extracted 14 semantic chunks from C:\\Users\\HP\\PycharmProjects\\rag_qa\\data\\resume.json.\n",
+      "INFO: Generating embeddings for text chunks...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "📚 Loading data from C:\\Users\\HP\\PycharmProjects\\rag_qa\\data\\resume.json and indexing into FAISS...\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "Batches: 100%|██████████| 1/1 [00:00<00:00,  4.68it/s]\n",
+      "INFO: Initializing FAISS vector index...\n",
+      "INFO: Successfully added 14 vectors to the FAISS index.\n",
+      "INFO: RAG Pipeline setup complete.\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "✅ System ready! You can now run the query cell below.\n"
+     ]
+    }
+   ],
+   "execution_count": 15
   },
   {
-   "metadata": {},
+   "metadata": {
+    "ExecuteTime": {
+     "end_time": "2026-03-14T17:16:36.202406Z",
+     "start_time": "2026-03-14T17:16:31.466438Z"
+    }
+   },
    "cell_type": "code",
-   "outputs": [],
-   "execution_count": null,
    "source": [
-    "if __name__ == \"__main__\":\n",
-    "    main()"
+    "# Change this question, then press Shift+Enter to run the RAG pipeline\n",
+    "question = \"What is his experience with React and IoT?\"\n",
+    "\n",
+    "print(f\"🤔 Question: {question}\")\n",
+    "print(\"⏳ Retrieving context and generating answer...\\n\")\n",
+    "\n",
+    "try:\n",
+    "    # We set top_k=3 to pull the 3 most relevant chunks for the LLM\n",
+    "    answer = pipeline.query(question, top_k=3)\n",
+    "\n",
+    "    print(\"🤖 Answer:\")\n",
+    "    print(answer)\n",
+    "    print(\"-\" * 50)\n",
+    "except Exception as e:\n",
+    "    print(f\"❌ An error occurred during the query: {e}\")"
    ],
-   "id": "338f953d8209739a"
+   "id": "338f953d8209739a",
+   "outputs": [
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "INFO: Processing query: 'What is his experience with React and IoT?'\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "🤔 Question: What is his experience with React and IoT?\n",
+      "⏳ Retrieving context and generating answer...\n",
+      "\n"
+     ]
+    },
+    {
+     "name": "stderr",
+     "output_type": "stream",
+     "text": [
+      "Batches: 100%|██████████| 1/1 [00:00<00:00, 27.81it/s]\n",
+      "INFO: Retrieved 3 relevant context chunks.\n",
+      "INFO: Sending query to OpenRouter using model: stepfun/step-3.5-flash:free...\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "🤖 Answer:\n",
+      "Based on the provided context:\n",
+      "\n",
+      "His experience with **React** is demonstrated in both roles:\n",
+      "1.  At **UNILAG Design Studio**, he used React to develop interactive internal dashboards for IoT data visualization.\n",
+      "2.  At **HeadStarter AI**, he engineered responsive AI applications using React/TypeScript, implementing Server-Side Rendering (SSR) and state management with custom Hooks and Context API.\n",
+      "\n",
+      "His experience with **IoT** is specific to his role at **UNILAG Design Studio**, where his responsibilities included:\n",
+      "*   Developing interactive dashboards for **IoT data visualization** using React.\n",
+      "*   Bridging hardware and web layers by designing intuitive UI controls for **IoT devices**.\n",
+      "*   Refactoring legacy frontend code in this IoT-related project.\n",
+      "\n",
+      "There is no mention of IoT work in his HeadStarter AI fellowship.\n",
+      "--------------------------------------------------\n"
+     ]
+    }
+   ],
+   "execution_count": 16
   }
  ],
  "metadata": {
