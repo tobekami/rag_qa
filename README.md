@@ -1,5 +1,3 @@
-My apologies, I completely missed the mark on the formatting! Here is the README rendered directly so it acts as normal text without the annoying markdown wrappers.
-
 # Resume RAG Q&A System
 
 A modular Retrieval-Augmented Generation (RAG) system designed to interactively answer questions based on a structured domain dataset (a professional resume).
@@ -78,7 +76,3 @@ This project uses `pytest` for Test-Driven Development. The test suite includes 
 
 To run the test suite from the root directory, execute:
 `pytest -v tests/`
-
----
-
-Would you like me to write up a quick Git commit message so we can lock this version in, or is there another feature we need to add?
